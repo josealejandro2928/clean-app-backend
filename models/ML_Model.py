@@ -31,7 +31,7 @@ class ML_Model(Singleton):
         )
         self.session = tf.Session(config=config)
         K.set_session(self.session)
-        print("\n\n\n\n*************SESSION OBJECT IN PREDICTION**************************: ",
+        print("\n*************SESSION OBJECT IN INIT**************************: ",
               self.session, "\n\n\n\n")
         # self.graph = tf.compat.v1.get_default_graph()
         self.model = load_model("./config/mymodel.h5",
@@ -45,8 +45,8 @@ class ML_Model(Singleton):
         test_x = np.load("./config/test_x.npy")
         test_y = np.load("./config/test_y.npy")
         # prediction = self.model.predict(test_x)
-        print("\n\n\n\n*************SESSION OBJECT IN PREDICTION**************************: ",
-              self.session, "\n\n\n\n")
+        print("\n\n*************SESSION OBJECT IN PREDICTION**************************: ",
+              self.session, "\n\n")
         try:
             with self.session.as_default():
                 with self.session.graph.as_default():
