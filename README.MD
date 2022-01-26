@@ -26,7 +26,15 @@ python run.py
 ```sh
 pip3 freeze > requirements.txt
 ```
-
+## DEPLOYMENT AND MORE ##
+### 1. Build the docker image
+```sh
+sudo docker build -t clean-app-backend-cont .
+```
+### 2. Testing the container
+```sh
+sudo docker run -p 3333:3333 clean-app-backend-cont
+```
 ### Authors
 
 1. [Jose Alejandro Concepcion Alvarez](https://www.gssi.it/people/students/students-computer-science/item/15643-concepcion-alvarez-jose-aleandro)
