@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waste classifier</title>
+    <link rel="stylesheet" href="static/styles/main.css" />
+    <link rel="stylesheet" href="static/styles/card-form.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container sec-padding fade-in">
+        <h1>{{ title }}</h1>
+        <p>{{subTitle}}</p>
+
+        <app-alert-box v-if="error" style="max-width: 50rem">
+          <span>{{error}}</span>
+        </app-alert-box>
+
+        <div class="card" style="width: 50rem; position: relative">
+          <div class="box-container">
+            <div class="left">
+              <p style="text-transform: uppercase">--Pick an image--</p>
+              <div v-if="!showImage" class="card-image" @click="onPickImage()"></div>
+              <img v-else :src="imageUri" class="card-image" @click="onPickImage()" />
+              <template v-if="showImage">
+                <div>
+                  <p>name: <strong>{{fileImage?.name}}</strong></p>
+                  <p>size: <strong>{{calculateSize()}} Kb</strong></p>
+                </div>
+              </template>
+
+              <input ref="input-file" hidden type="file" @change="onHandleFileSelect" />
+              <br />
+              <button
+                :disabled="!fileImage"
+                style="margin: 0px auto; width: 90%"
+                class="btn"
+                @click="onSendImage()"
+              >
+                Enviar
+              </button>
+            </div>
+            <div class="right">
+              <template v-if="response">
+                <p style="text-transform: uppercase">Accuracy for trash clasification:</p>
+                <p style="margin: 0"><strong>{{response?.trash?.accuracy.toFixed(2)}}</strong></p>
+                <p style="text-transform: uppercase">Suggested labels:</p>
+                <div style="display: flex; flex-wrap: wrap">
+                  <span class="labels" v-for="label in response?.suggested_labels">
+                    {{label}}
+                  </span>
+                </div>
+                <p style="text-transform: uppercase">System Response:</p>
+                <strong>
+                  <p v-if="response?.trash?.accuracy>=60" style="color: #43a047; margin: 0">
+                    Good accuracy, I think this image could have waste
+                  </p>
+                  <p v-if="response?.trash?.accuracy<60" style="color: #d32f2f; margin: 0">
+                    It's not accuracy, I think this image could not have waste
+                  </p>
+                </strong>
+              </template>
+            </div>
+            <app-loader v-if="loading"></app-loader>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- VUE COMPONENTS -->
+    <script src="static/scripts/components/loader.js"></script>
+    <script src="static/scripts/components/alert-box.js"></script>
+    <script src="static/scripts/main.js"></script>
+    <!--  -->
+  </body>
+</html>
