@@ -1,7 +1,8 @@
 // const URL_API = 'http://localhost:3333';
 const URL_API = 'http://cleanbackendapp-env.eba-cpumx2fm.us-east-1.elasticbeanstalk.com/';
 
-// eslint-disable-next-line no-undef
+
+// eslint-disable-next-line no-unused-vars
 let app = new Vue({
   el: '#app',
   data: {
@@ -43,18 +44,25 @@ let app = new Vue({
     },
     ///////////////////IMAGE PICKER FUNCTIONALITIES //////////////////////////////
     onHandleFileSelect: function (evt) {
-      const files = evt.target?.files;
-      if (files) {
-        const file = files[0];
-        this.imageName = file.name.split('.')[0];
-        this.imageUri = `data:${file.type};base64,`;
-        this.fileImage = file;
-        if (files && file) {
-          const reader = new FileReader();
-          reader.onload = this.handleReaderLoaded.bind(this);
-          reader.readAsBinaryString(file);
+      try {
+        this.error = null;
+        const files = evt.target?.files;
+        if (files) {
+          const file = files[0];
+          if (!file.type.includes(`image/`)) throw new Error("Images are only allowed");
+          this.imageName = file.name.split('.')[0];
+          this.imageUri = `data:${file.type};base64,`;
+          this.fileImage = file;
+          if (files && file) {
+            const reader = new FileReader();
+            reader.onload = this.handleReaderLoaded.bind(this);
+            reader.readAsBinaryString(file);
+          }
         }
+      } catch (error) {
+        this.error = error.message;
       }
+
     },
     handleReaderLoaded: function (readerEvt) {
       const binaryString = readerEvt.target.result;
