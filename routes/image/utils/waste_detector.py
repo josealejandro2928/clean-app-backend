@@ -7,29 +7,11 @@ from models.ML_Model import ML_Model
 
 def sortingWaste(file):
     img = Image.open(file.stream)
-    numpydata = asarray(img)
-    
-    fake_labels = ["plastic", "metal", "toxic",
-                   "battery", "glass", "organic", "paper", "furniture", "chemical"]
-
+    numpydata = asarray(img)    
     model = ML_Model.getInstance()   
-
-    result_predict = model.test_predict()
-    
-    # print(result_predict)
-    
-    response = {
-        "trash": {
-            "accuracy": random.random()*100
-        },
-        "suggested_labels": random_from_array(fake_labels, random.randint(0, len(fake_labels)-1)),
-        "image": {
-            "width": numpydata.shape[1],
-            "height": numpydata.shape[0]
-        },
-        "predictor":[]
-    }
-    return response
+    result_predict = model.predict(numpydata)
+        
+    return result_predict
 
 
 def random_from_array(array, size=4):
