@@ -21,9 +21,12 @@ def sortingWaste(file):
                    "battery", "glass", "organic", "paper", "furniture", "chemical"]
 
     model = ML_Model.getInstance()
+  
     print("\n GRAPH DURING THE LOADING MODEL \n",model.graph)
     print("\n MODEL DURING THE LOADING MODEL \n",model.model)
     result_predict = model.test_predict()
+    
+    print(result_predict)
     
     response = {
         "trash": {
