@@ -1,0 +1,27 @@
+{
+  "name": "clean-app-backend",
+  "version": "1.0.0",
+  "description": "A backend for Clean-App-2",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josealejandro2928/clean-app-backend.git"
+  },
+  "keywords": [
+    "backend",
+    "flask",
+    "api"
+  ],
+  "author": "Jose Alejandro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josealejandro2928/clean-app-backend/issues"
+  },
+  "homepage": "https://github.com/josealejandro2928/clean-app-backend#readme",
+  "devDependencies": {
+    "eslint": "^8.7.0"
+  }
+}
