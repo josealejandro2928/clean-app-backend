@@ -26,7 +26,7 @@ class ML_Model(Singleton):
         self.session = None
         self.load_model()
         print(self.model.summary())
-        self.confidence_threshold = .5
+        self.confidence_threshold = .33
         self.labels = {0: 'cardboard', 1: 'glass', 2: 'metal',
             3: 'paper', 4: 'plastic', 5: 'trash'} 
 
@@ -75,18 +75,19 @@ class ML_Model(Singleton):
             }                        
         }
         s_l = []
+        p_l = {}
         for c in conf_order:
             if pred[c] > self.confidence_threshold:
                 s_l.append(self.labels[c])
-            else:
-                break
+            p_l[self.labels[c]] = round(pred[c]*100,2)
         out['suggested_labels'] = s_l
+        out['predictions'] = p_l
         return out
         
     
     def test_predict(self):
         labels = {0: 'cardboard', 1: 'glass', 2: 'metal',
-                  3: 'paper', 4: 'plastic', 5: 'trash'}
+                  3: 'paper', 4: 'plastic', 5: 'others'}
         test_x = np.load("./config/test_x.npy")
         test_y = np.load("./config/test_y.npy")
         # prediction = self.model.predict(test_x)
