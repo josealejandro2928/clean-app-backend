@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 function getDataFromExternalApi(imagePath) {
   let appName = 'CleanApp2-Pepe-testing-5347115';
   let tableName = 'Evidence';
@@ -11,7 +13,7 @@ function getDataFromExternalApi(imagePath) {
 
   let options = {
     method: 'post',
-    muteHttpExceptions: true,
+    muteHttpExceptions: false,
     payload: {
       file: imgFileBlob,
     },
@@ -22,15 +24,23 @@ function getDataFromExternalApi(imagePath) {
 }
 
 function getSuggestionLablesFromImage(fileName) {
-  let data = getDataFromExternalApi(fileName);
-  let labels = data['suggested_labels'].join(', ');
-  return labels || 'None';
+  try {
+    let data = getDataFromExternalApi(fileName);
+    let labels = data['suggested_labels'].join(', ');
+    return labels || 'None';
+  } catch (e) {
+    return `Error calling the API: ${e.message}`;
+  }
 }
 
 function getAccuracyTrashClass(fileName) {
-  Utilities.sleep(1000);
-  let data = getDataFromExternalApi(fileName);
-  let trash_accuracy = data['trash']['accuracy'];
-  Logger.log(trash_accuracy);
-  return trash_accuracy.toFixed(2);
+  try {
+    Utilities.sleep(1000);
+    let data = getDataFromExternalApi(fileName);
+    let trash_accuracy = data['trash']['accuracy'];
+    Logger.log(trash_accuracy);
+    return trash_accuracy.toFixed(2);
+  } catch (e) {
+    return `Error calling the API: ${e.message}`;
+  }
 }

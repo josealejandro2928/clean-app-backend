@@ -9,7 +9,6 @@ import routes.image.utils.waste_detector as wd
 image_service = Blueprint('image_service', __name__)
 
 
-
 @image_service.route('/test')
 def index():
     return jsonify({'status': 'Ok',
@@ -40,7 +39,7 @@ def analyze_image():
 
         # path = os.path.join(os.getcwd(), 'static', 'images',  filename)
         # file.save(path)
-    
+
         resp = wd.sortingWaste(file)
         print(resp)
         return jsonify(resp), 201

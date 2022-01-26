@@ -2,3 +2,4 @@ env
 static/images/*
 __pycache__
 *.pyc
+node_modules

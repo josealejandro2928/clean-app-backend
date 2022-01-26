@@ -8,6 +8,8 @@ from models.ML_Model import ML_Model
 
 
 # from routes.image.utils.recognize import test_predict,graph
+# 0x7f7f5d24d370
+# 0x7f7f5d24d370
 
 def sortingWaste(file):
     img = Image.open(file.stream)
@@ -18,7 +20,9 @@ def sortingWaste(file):
     fake_labels = ["plastic", "metal", "toxic",
                    "battery", "glass", "organic", "paper", "furniture", "chemical"]
 
-    model = ML_Model()
+    model = ML_Model.getInstance()
+    print("\n GRAPH DURING THE LOADING MODEL \n",model.graph)
+    print("\n MODEL DURING THE LOADING MODEL \n",model.model)
     result_predict = model.test_predict()
     
     response = {
