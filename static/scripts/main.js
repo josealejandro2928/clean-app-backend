@@ -37,6 +37,7 @@ let app = new Vue({
         }
         this.loading = false;
         this.response = await data.json();
+        this.response.predictions = Object.keys(this.response.predictions).map(x => ({ name: x, value: this.response.predictions[x] }))
       } catch (e) {
         this.loading = false;
         this.error = e.message;

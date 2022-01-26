@@ -121,3 +121,11 @@ body {
   border-radius: 8px;
   margin: 8px 0px;
 }
+
+ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}

@@ -10,6 +10,7 @@
   flex: 0 1 50%;
   width: 50%;
   padding: 16px 16px;
+  padding-left: 8px;
 }
 .box-container .right {
   display: flex;
@@ -22,7 +23,7 @@
 
 .box-container .left .card-image {
   height: 300px;
-  width: 250px;
+  width: 300px;
   border: 1px dashed #ffff;
   background-color: #626262;
   border-radius: 16px;
@@ -52,4 +53,19 @@
     border-left: none;
     border-top: 1px solid #fafafa;
   }
+}
+
+.list-result {
+  min-height: 32px;
+  display: flex;
+  width: 100%;
+  border: 1px solid;
+  align-items: center;
+  padding: 2px 8px;
+  margin: 2px 0px;
+  border-radius: 2px;
+}
+
+.list-result:hover {
+  background-color: var(--background);
 }

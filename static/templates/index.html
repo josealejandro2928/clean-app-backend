@@ -62,6 +62,13 @@
                     It's not accuracy, I think this image could not have waste
                   </p>
                 </strong>
+                <p style="text-transform: uppercase">Prediction from the ML Model:</p>
+                <ul>
+                  <li class="list-result" v-for="pred in response?.predictions">
+                    <span style="flex: 0 1 50%">{{pred.name}}: </span>
+                    <span>{{pred.value}}</span>
+                  </li>
+                </ul>
               </template>
             </div>
             <app-loader v-if="loading"></app-loader>
