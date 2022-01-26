@@ -14,7 +14,8 @@ def sortingWaste(file):
 
     model = ML_Model.getInstance()   
 
-    result_predict = model.test_predict()
+    # result_predict = model.test_predict()
+    result_predict = model.predict(numpydata)
     
     # print(result_predict)
     
