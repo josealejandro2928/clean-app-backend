@@ -34,3 +34,14 @@ class ML_Model(Singleton):
             print("\n\n\n\n*************GRAPH OBJECT IN PREDICTION**************************: ", self.graph,"\n\n\n\n")     
             prediction = self.model.predict(test_x)
         return prediction
+    
+    def predict(self, input_img):
+        nim = image.smart_resize(input_img, (224,224))
+        nim = (1./255) * nim
+        test_i = nim.reshape(1,224,224,3)
+        return self.model.predict(test_i)
+
+
+if __name__ == "__main__":
+    mod = ML_Model()
+    print(mod.model.predict_generator)
