@@ -1,5 +1,5 @@
-// const URL_API = 'http://localhost:3333';
-const URL_API = 'https://service-flask-rest-api.herokuapp.com';
+const URL_API = 'http://localhost:3333';
+// const URL_API = 'https://service-flask-rest-api.herokuapp.com';
 
 // eslint-disable-next-line no-undef
 let app = new Vue({
@@ -52,7 +52,7 @@ let app = new Vue({
         if (files && file) {
           const reader = new FileReader();
           reader.onload = this.handleReaderLoaded.bind(this);
-          reader.readABinaryString(file);
+          reader.readAsBinaryString(file);
         }
       }
     },
