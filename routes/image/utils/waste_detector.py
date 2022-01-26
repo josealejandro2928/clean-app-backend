@@ -5,28 +5,18 @@ from numpy import asarray
 
 from models.ML_Model import ML_Model
 
-
-
-# from routes.image.utils.recognize import test_predict,graph
-# 0x7f7f5d24d370
-# 0x7f7f5d24d370
-
 def sortingWaste(file):
     img = Image.open(file.stream)
     numpydata = asarray(img)
-    # print(test_predict())
-    # HERE WE ARE GOIN TO CALL THE FUNCTION TO SORTING
-    # FOR NOW IS FAKE
+    
     fake_labels = ["plastic", "metal", "toxic",
                    "battery", "glass", "organic", "paper", "furniture", "chemical"]
 
-    model = ML_Model.getInstance()
-  
-    print("\n GRAPH DURING THE LOADING MODEL \n",model.graph)
-    print("\n MODEL DURING THE LOADING MODEL \n",model.model)
+    model = ML_Model.getInstance()   
+
     result_predict = model.test_predict()
     
-    print(result_predict)
+    # print(result_predict)
     
     response = {
         "trash": {
