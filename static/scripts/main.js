@@ -1,5 +1,5 @@
-const URL_API = 'http://localhost:3333';
-// const URL_API = 'https://service-flask-rest-api.herokuapp.com';
+// const URL_API = 'http://localhost:3333';
+const URL_API = 'http://cleanbackendapp-env.eba-cpumx2fm.us-east-1.elasticbeanstalk.com/';
 
 // eslint-disable-next-line no-undef
 let app = new Vue({
