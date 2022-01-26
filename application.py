@@ -1,4 +1,4 @@
-from main import app
+from main import application
 from models.ML_Model import ML_Model
 import os
 if __name__ == '__main__':
@@ -9,4 +9,4 @@ if __name__ == '__main__':
     # logger = logging.getLogger('waitress')
     # logger.setLevel(logging.INFO)
     # serve(app, host="0.0.0.0", port=port)
-    app.run(host='0.0.0.0', port=port)
+    application.run(host='0.0.0.0', port=port)

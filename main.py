@@ -14,14 +14,14 @@ jinja_options.update(dict(
     comment_end_string='#$',
 ))
 
-app = Flask(__name__, template_folder="static", static_folder="static")
-CORS(app)
+application = Flask(__name__, template_folder="static", static_folder="static")
+CORS(application)
 
 ############ REGISTERING THE SERVICES (Using Blueprint) ###################################
-app.register_blueprint(image_service, url_prefix='/image')
-app.register_blueprint(user_service, url_prefix='/user')
+application.register_blueprint(image_service, url_prefix='/image')
+application.register_blueprint(user_service, url_prefix='/user')
 
 
-@app.route('/')
+@application.route('/')
 def index():
     return render_template('templates/index.html')
