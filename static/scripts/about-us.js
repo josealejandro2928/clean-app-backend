@@ -3,7 +3,7 @@ Vue.component('app-about-us', {
       <section class="about">
         <div class="card" style="width: 60rem; max-width: 100%; position: relative;margin-bottom:1rem">
           <p class="text">
-            <img src="https://www.gssi.it/media/k2/items/cache/636b27994a8fb7f8e9e44b33bf22f20a_L.jpg"/>
+            <img src="static/images/jose.jpg"/>
               Jose Alejandro Concepcion Alvarez is currently enrolled on the PhD of Computer Science, GSSI. Previously he was a Training Professor at the Microelectronic Department, the Technological University of Havana “José Antonio Echeverría”. He obtained a MSc in Automation Engineering 
               from the Technological University of Havana “José Antonio Echeverría”. He has experience in analyzing and designing algorithms 
               and software engineering, in the last 2 years he was working as a software developer for Cuban and International companies. 
@@ -20,7 +20,7 @@ Vue.component('app-about-us', {
         </div>
         <div class="card" style="width: 60rem; max-width: 100%; position: relative;margin-bottom:1rem">
           <p class="text">
-            <img src="https://www.gssi.it/media/k2/items/cache/248cdbb286317752004809151f60650c_L.jpg"/>
+            <img src="static/images/tony.jpg"/>
             Juan Antonio Pinera Garcia is currently enrolled on the PhD of Computer Science, GSSI. Previously he was a Training Professor at the Computer Engineering Department, 
             Technological University of Havana (Cuba) and a Research Fellow at the “Group of Robotics and Mechatronics”, Technological University of 
             Havana(Cuba), where he co-led multiple projects to apply robotics to help solve everyday problems in multiple escenarios. He was awarded 
