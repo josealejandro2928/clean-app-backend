@@ -17,11 +17,20 @@ jinja_options.update(dict(
 application = Flask(__name__, template_folder="static", static_folder="static")
 CORS(application)
 
+############ REST API PART #######################################
 ############ REGISTERING THE SERVICES (Using Blueprint) ###################################
 application.register_blueprint(image_service, url_prefix='/image')
 application.register_blueprint(user_service, url_prefix='/user')
 
 
+############ WEB PART #######################################
 @application.route('/')
 def index():
     return render_template('templates/index.html')
+
+
+@application.route('/about-us')
+def about_us():
+    return render_template('templates/about-us.html')
+
+############ WEB PART #######################################

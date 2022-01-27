@@ -29,11 +29,17 @@
 
     <link rel="stylesheet" href="static/styles/main.css" />
     <link rel="stylesheet" href="static/styles/card-form.css" />
+    <link rel="stylesheet" href="static/styles/navbar.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- WEB COMPONETS -->
+    <script src="static/scripts/components/navbar.js"></script>
+    <script src="static/scripts/components/loader.js"></script>
+    <script src="static/scripts/components/alert-box.js"></script>
   </head>
   <body>
     <div id="app">
-      <div class="container sec-padding fade-in">
+      <app-navbar></app-navbar>
+      <div class="container sec-padding fade-in" style="margin-top: 60px">
         <h1>{{ title }}</h1>
         <p>{{subTitle}}</p>
 
@@ -98,10 +104,6 @@
         </div>
       </div>
     </div>
-    <!-- VUE COMPONENTS -->
-    <script src="static/scripts/components/loader.js"></script>
-    <script src="static/scripts/components/alert-box.js"></script>
     <script src="static/scripts/main.js"></script>
-    <!--  -->
   </body>
 </html>

@@ -28,7 +28,7 @@ let app = new Vue({
       this.loading = true;
       this.error = null;
       try {
-        let data = await fetch(`${URL_API}/image/analyze`, {
+        let data = await fetch(`${URL_API}image/analyze`, {
           body: formData,
           method: 'POST',
         });

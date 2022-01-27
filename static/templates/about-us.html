@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="icon" href="static/templates/favicon.png" type="image/pgn" />
+    <meta property="og:site_name" content="Clean App Backend Service" />
+    <meta property="og:title" content="Clean App Backend Service" />
+    <meta property="og:author" content="Jose Alejandro Concepción Alvarez" />
+    <meta property="og:author" content="Juan Antonio Pinera Garcia" />
+    <meta
+      property="og:description"
+      content="A Full Web Rest Flask Api with a Machine Learning Model."
+    />
+    <meta
+      property="og:image"
+      content="http://cleanbackendapp-env.eba-cpumx2fm.us-east-1.elasticbeanstalk.com/static/images/share.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="256" />
+    <meta property="og:image:height" content="256" />
+    <meta
+      property="og:url"
+      content="http://cleanbackendapp-env.eba-cpumx2fm.us-east-1.elasticbeanstalk.com/"
+    />
+
+    <link rel="stylesheet" href="static/styles/main.css" />
+    <link rel="stylesheet" href="static/styles/navbar.css" />
+    <link rel="stylesheet" href="static/styles/about.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- WEB COMPONETS -->
+    <script src="static/scripts/components/navbar.js"></script>
+    <script src="static/scripts/components/loader.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <app-navbar></app-navbar>
+      <div class="container sec-padding fade-in" style="margin-top: 60px">
+        <h1>{{title}}</h1>
+        <p>{{subTitle}}</p>
+        <app-about-us></app-about-us>
+      </div>
+    </div>
+    <script src="static/scripts/about-us.js"></script>
+  </body>
+</html>
