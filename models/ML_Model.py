@@ -40,7 +40,7 @@ class ML_Model(Singleton):
         print('***************Model loaded. Start serving...********************')
 
     def predict(self, input_img):
-
+        input_img = input_img[:,:,:3]
         p_im = Image.fromarray(input_img)
         px = p_im.resize((224, 224))
         nim = np.array(px)
