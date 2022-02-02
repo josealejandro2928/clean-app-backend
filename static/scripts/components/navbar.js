@@ -1,7 +1,7 @@
 Vue.component('app-navbar', {
   data: () => ({
     linkActivated: '/',
-    title: 'CleanApp Service'
+    title: 'ML Service'
   }),
   template: `
     <div class="toolbar" role="banner">
@@ -12,10 +12,10 @@ Vue.component('app-navbar', {
         </span>
        
         <span>
-          <a   aria-label="Home" rel="noopener" href="./" title="Home">
-          <button :class="{navbtn:true,activated:(linkActivated == '/')}">Home</button>
+          <a  title="Waste classifier"  aria-label="Waste clf." rel="noopener" href="./" >
+          <button :class="{navbtn:true,activated:(linkActivated == '/')}">Waste clf.</button>
           </a>
-          <a  aria-label="About Us" rel="noopener" href="./about-us" title="About Us">
+          <a title="Who are we?"  aria-label="About Us" rel="noopener" href="./about-us">
           <button :class="{navbtn:true,activated:(linkActivated == '/about-us')}">About Us</button>
           </a>
           <div class="spacer"></div>

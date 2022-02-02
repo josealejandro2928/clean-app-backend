@@ -1,5 +1,3 @@
-// const URL_API = 'http://localhost:3333';
-// const URL_API = 'http://cleanbackendapp-env.eba-cpumx2fm.us-east-1.elasticbeanstalk.com/';
 const URL_API = './';
 
 
@@ -7,7 +5,7 @@ const URL_API = './';
 let app = new Vue({
   el: '#app',
   data: {
-    title: 'Welcome to Flask Api Service',
+    title: 'Welcome to Waste Classifier',
     subTitle: '** With this service, waste can be sorted by giving an image.**',
     showImage: false,
     imageUri: '',
@@ -28,7 +26,7 @@ let app = new Vue({
       this.loading = true;
       this.error = null;
       try {
-        let data = await fetch(`${URL_API}image/analyze`, {
+        let data = await fetch(`${URL_API}analize/trash`, {
           body: formData,
           method: 'POST',
         });
