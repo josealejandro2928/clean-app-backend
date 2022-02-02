@@ -5,11 +5,11 @@ from os import path
 from os import listdir
 from os.path import isfile, join
 import numpy as np
-import routes.analize.controllers.waste_detector as wd
-analize_service = Blueprint('analize_service', __name__)
+import routes.analyze.controllers.waste_detector as wd
+analyze_service = Blueprint('analyze_service', __name__)
 
 
-@analize_service.route('/test')
+@analyze_service.route('/test')
 def index():
     return jsonify({'status': 'Ok',
                     'image': {
@@ -18,7 +18,7 @@ def index():
                     }})
 
 
-@analize_service.route('/trash', methods=['POST'])
+@analyze_service.route('/waste', methods=['POST'])
 def analyze_image():
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
     try:

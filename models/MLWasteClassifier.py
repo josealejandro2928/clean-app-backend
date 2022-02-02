@@ -18,7 +18,7 @@ tf.disable_v2_behavior()
 # tf.compat.v1.disable_eager_execution()
 
 
-class ML_Model(Singleton):
+class MLWasteClassifier(Singleton):
 
     def __init__(self):
         super().__init__()

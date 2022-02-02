@@ -26,7 +26,7 @@ let app = new Vue({
       this.loading = true;
       this.error = null;
       try {
-        let data = await fetch(`${URL_API}analize/trash`, {
+        let data = await fetch(`${URL_API}analyze/waste`, {
           body: formData,
           method: 'POST',
         });

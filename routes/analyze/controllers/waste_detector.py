@@ -3,14 +3,15 @@ import random
 from PIL import Image
 from numpy import asarray
 
-from models.ML_Model import ML_Model
+from models.MLWasteClassifier import MLWasteClassifier
+
 
 def sortingWaste(file):
     img = Image.open(file.stream)
-    numpydata = asarray(img)    
-    model = ML_Model.getInstance()   
+    numpydata = asarray(img)
+    model = MLWasteClassifier.getInstance()
     result_predict = model.predict(numpydata)
-        
+
     return result_predict
 
 

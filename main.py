@@ -1,6 +1,6 @@
 import json
 from flask import Flask, jsonify, render_template
-from routes.analize.analize_service import analize_service
+from routes.analyze.analyze_service import analyze_service
 from routes.user.user_service import user_service
 from flask_cors import CORS
 
@@ -19,7 +19,7 @@ CORS(application)
 
 ############ REST API PART #######################################
 ############ REGISTERING THE SERVICES (Using Blueprint) ###################################
-application.register_blueprint(analize_service, url_prefix='/analize')
+application.register_blueprint(analyze_service, url_prefix='/analyze')
 application.register_blueprint(user_service, url_prefix='/user')
 
 
