@@ -35,12 +35,12 @@ class MLWasteClassifier(Singleton):
         K.set_session(self.session)
         print("\n*************SESSION OBJECT IN INIT**************************: ",
               self.session, "\n\n\n\n")
-        self.model = load_model("./config/mymodel.h5",
+        self.model = load_model("./config/tclassifier.h5",
                                 custom_objects={"KerasLayer": hub.KerasLayer})
         print('***************Model loaded. Start serving...********************')
 
     def predict(self, input_img):
-        input_img = input_img[:,:,:3]
+        input_img = input_img[:, :, :3]
         p_im = Image.fromarray(input_img)
         px = p_im.resize((224, 224))
         nim = np.array(px)
