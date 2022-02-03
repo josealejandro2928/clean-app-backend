@@ -40,7 +40,7 @@ class ML_Model(Singleton):
         print("\n*************SESSION OBJECT IN INIT**************************: ",
               self.session, "\n\n\n\n")
         # self.graph = tf.compat.v1.get_default_graph()
-        self.model = load_model("./config/mymodel.h5",
+        self.model = load_model("./config/tclassifier.h5",
                                 custom_objects={"KerasLayer": hub.KerasLayer})
         # self.model._make_predict_function()
         print('***************Model loaded. Start serving...********************')
