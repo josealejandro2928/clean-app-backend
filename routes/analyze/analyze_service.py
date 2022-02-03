@@ -5,11 +5,11 @@ from os import path
 from os import listdir
 from os.path import isfile, join
 import numpy as np
-import routes.image.utils.waste_detector as wd
-image_service = Blueprint('image_service', __name__)
+import routes.analyze.controllers.waste_detector as wd
+analyze_service = Blueprint('analyze_service', __name__)
 
 
-@image_service.route('/test')
+@analyze_service.route('/test')
 def index():
     return jsonify({'status': 'Ok',
                     'image': {
@@ -18,7 +18,7 @@ def index():
                     }})
 
 
-@image_service.route('/analyze', methods=['POST'])
+@analyze_service.route('/waste', methods=['POST'])
 def analyze_image():
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
     try:
@@ -34,21 +34,8 @@ def analyze_image():
             error = 'Allowed file types are png, jpg, jpeg, gif'
             return jsonify({"message": error}), 400
 
-        filename = str(uuid.uuid4()) + '.' + \
-            file.filename.rsplit('.', 1)[1].lower()
-
-        # path = os.path.join(os.getcwd(), 'static', 'images',  filename)
-        # file.save(path)
-
         resp = wd.sortingWaste(file)
         print(resp)
         return jsonify(resp), 201
     except NameError:
         return jsonify({"message": NameError}), 400
-
-
-@image_service.route('/', methods=['GET'])
-def list_images():
-    myPath = os.path.join(os.getcwd(), 'static', 'images')
-    onlyfiles = [f for f in listdir(myPath) if isfile(join(myPath, f))]
-    return jsonify({"data": onlyfiles})

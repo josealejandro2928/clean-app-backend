@@ -5,13 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Waste classifier</title>
+    <link rel="icon" href="static/templates/favicon.png" type="image/pgn" />
+    <meta property="og:site_name" content="Clean App Backend Service" />
+    <meta property="og:title" content="Clean App Backend Service" />
+    <meta property="og:author" content="Jose Alejandro Concepción Alvarez" />
+    <meta property="og:author" content="Juan Antonio Pinera Garcia" />
+    <meta
+      property="og:description"
+      content="A Full Web Rest Flask Api with a Machine Learning Model."
+    />
+    <meta
+      property="og:image"
+      content="http://cleanbackendapp-env.eba-cpumx2fm.us-east-1.elasticbeanstalk.com/static/images/share.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="256" />
+    <meta property="og:image:height" content="256" />
+    <meta
+      property="og:url"
+      content="http://cleanbackendapp-env.eba-cpumx2fm.us-east-1.elasticbeanstalk.com/"
+    />
+
     <link rel="stylesheet" href="static/styles/main.css" />
     <link rel="stylesheet" href="static/styles/card-form.css" />
+    <link rel="stylesheet" href="static/styles/navbar.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- WEB COMPONETS -->
+    <script src="static/scripts/components/navbar.js"></script>
+    <script src="static/scripts/components/loader.js"></script>
+    <script src="static/scripts/components/alert-box.js"></script>
   </head>
   <body>
     <div id="app">
-      <div class="container sec-padding fade-in">
+      <app-navbar></app-navbar>
+      <div class="container sec-padding fade-in" style="margin-top: 60px">
         <h1>{{ title }}</h1>
         <p>{{subTitle}}</p>
 
@@ -19,10 +47,10 @@
           <span>{{error}}</span>
         </app-alert-box>
 
-        <div class="card" style="width: 50rem; position: relative">
+        <div class="card" style="width: 60rem; max-width: 100%; position: relative">
           <div class="box-container">
             <div class="left">
-              <p style="text-transform: uppercase">--Pick an image--</p>
+              <p style="text-transform: uppercase">Pick an image</p>
               <div v-if="!showImage" class="card-image" @click="onPickImage()"></div>
               <img v-else :src="imageUri" class="card-image" @click="onPickImage()" />
               <template v-if="showImage">
@@ -32,7 +60,7 @@
                 </div>
               </template>
 
-              <input ref="input-file" hidden type="file" @change="onHandleFileSelect" />
+              <input ref="input-file" hidden type="file" @change="onHandleFileSelect($event)" />
               <br />
               <button
                 :disabled="!fileImage"
@@ -43,8 +71,8 @@
                 Enviar
               </button>
             </div>
-            <div class="right">
-              <template v-if="response">
+            <div v-if="response" class="right" id="result-part-id">
+              <template>
                 <p style="text-transform: uppercase">Accuracy for trash clasification:</p>
                 <p style="margin: 0"><strong>{{response?.trash?.accuracy.toFixed(2)}}</strong></p>
                 <p style="text-transform: uppercase">Suggested labels:</p>
@@ -55,13 +83,20 @@
                 </div>
                 <p style="text-transform: uppercase">System Response:</p>
                 <strong>
-                  <p v-if="response?.trash?.accuracy>=60" style="color: #43a047; margin: 0">
+                  <p v-if="response?.trash?.accuracy>=40" style="color: #43a047; margin: 0">
                     Good accuracy, I think this image could have waste
                   </p>
-                  <p v-if="response?.trash?.accuracy<60" style="color: #d32f2f; margin: 0">
+                  <p v-if="response?.trash?.accuracy<40" style="color: #d32f2f; margin: 0">
                     It's not accuracy, I think this image could not have waste
                   </p>
                 </strong>
+                <p style="text-transform: uppercase">Prediction from the ML Model:</p>
+                <ul style="width: 260px; max-width: 100%">
+                  <li class="list-result" v-for="pred in response?.predictions">
+                    <span style="flex: 0 1 50%">{{pred.name}}: </span>
+                    <span>{{pred.value}}</span>
+                  </li>
+                </ul>
               </template>
             </div>
             <app-loader v-if="loading"></app-loader>
@@ -69,10 +104,6 @@
         </div>
       </div>
     </div>
-    <!-- VUE COMPONENTS -->
-    <script src="static/scripts/components/loader.js"></script>
-    <script src="static/scripts/components/alert-box.js"></script>
-    <script src="static/scripts/main.js"></script>
-    <!--  -->
+    <script src="static/scripts/waste-classifier.js"></script>
   </body>
 </html>

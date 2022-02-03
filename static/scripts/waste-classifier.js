@@ -1,11 +1,11 @@
-// const URL_API = 'http://localhost:3333';
-const URL_API = 'http://cleanbackendapp-env.eba-cpumx2fm.us-east-1.elasticbeanstalk.com/';
+const URL_API = './';
 
-// eslint-disable-next-line no-undef
+
+// eslint-disable-next-line no-unused-vars
 let app = new Vue({
   el: '#app',
   data: {
-    title: 'Welcome to Flask Api Service',
+    title: 'Welcome to Waste Classifier',
     subTitle: '** With this service, waste can be sorted by giving an image.**',
     showImage: false,
     imageUri: '',
@@ -26,7 +26,7 @@ let app = new Vue({
       this.loading = true;
       this.error = null;
       try {
-        let data = await fetch(`${URL_API}/image/analyze`, {
+        let data = await fetch(`${URL_API}analyze/waste`, {
           body: formData,
           method: 'POST',
         });
@@ -36,6 +36,11 @@ let app = new Vue({
         }
         this.loading = false;
         this.response = await data.json();
+        this.response.predictions = Object.keys(this.response.predictions).map(x => ({ name: x, value: this.response.predictions[x] }))
+        let c = setTimeout(() => {
+          document.getElementById('result-part-id').scrollIntoView({ behavior: "smooth" })
+          clearTimeout(c);
+        }, 250)
       } catch (e) {
         this.loading = false;
         this.error = e.message;
@@ -43,18 +48,26 @@ let app = new Vue({
     },
     ///////////////////IMAGE PICKER FUNCTIONALITIES //////////////////////////////
     onHandleFileSelect: function (evt) {
-      const files = evt.target?.files;
-      if (files) {
-        const file = files[0];
-        this.imageName = file.name.split('.')[0];
-        this.imageUri = `data:${file.type};base64,`;
-        this.fileImage = file;
-        if (files && file) {
-          const reader = new FileReader();
-          reader.onload = this.handleReaderLoaded.bind(this);
-          reader.readAsBinaryString(file);
+      try {
+        this.error = null;
+        const files = evt.target?.files;
+        if (files) {
+          const file = files[0];
+          if (!file) return;
+          if (!file.type.includes(`image/`)) throw new Error("Images are only allowed");
+          this.imageName = file.name.split('.')[0];
+          this.imageUri = `data:${file.type};base64,`;
+          this.fileImage = file;
+          if (files && file) {
+            const reader = new FileReader();
+            reader.onload = this.handleReaderLoaded.bind(this);
+            reader.readAsBinaryString(file);
+          }
         }
+      } catch (error) {
+        this.error = error.message;
       }
+
     },
     handleReaderLoaded: function (readerEvt) {
       const binaryString = readerEvt.target.result;

@@ -1,0 +1,36 @@
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--primary);
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}
+
+.toolbar a .navbtn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: var(--primary);
+}
+.toolbar a .navbtn.activated {
+  filter: brightness(1.1);
+}
+
+.toolbar a .navbtn:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 800px) {
+  .toolbar .title {
+    display: none;
+  }
+}
