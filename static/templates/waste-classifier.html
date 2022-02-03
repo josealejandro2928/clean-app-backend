@@ -60,7 +60,7 @@
                 </div>
               </template>
 
-              <input ref="input-file" hidden type="file" @change="onHandleFileSelect" />
+              <input ref="input-file" hidden type="file" @change="onHandleFileSelect($event)" />
               <br />
               <button
                 :disabled="!fileImage"
