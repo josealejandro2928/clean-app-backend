@@ -11,12 +11,8 @@ import numpy as np
 import os
 import math
 import tensorflow_hub as hub
-# import tensorflow as tf
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
-# tf.enable_eager_execution()
-# tf.compat.v1.disable_eager_execution()
-
 
 class MLWasteClassifier(Singleton):
 
